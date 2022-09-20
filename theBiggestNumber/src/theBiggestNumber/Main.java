@@ -7,18 +7,18 @@ public class Main {
 		int number2 = 30;
 		int number3 = 10;
 		
-		int biggesetNumber = number1;
+		int biggestNumber = number1;
 		
-		if(biggesetNumber < number2 )
+		if(biggestNumber < number2 )
 		{
-			biggesetNumber = number2;
+			biggestNumber = number2;
 		}
-		if(biggesetNumber < number3)
+		if(biggestNumber < number3)
 		{
-			biggesetNumber = number3;
+			biggestNumber = number3;
 		}
 		
-		System.out.println("The biggest number : " + biggesetNumber);
+		System.out.println("The biggest number : " + biggestNumber);
 		
 	}
 
