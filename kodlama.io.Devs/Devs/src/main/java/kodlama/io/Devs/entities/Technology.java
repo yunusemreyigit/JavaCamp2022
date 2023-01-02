@@ -6,15 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Table(name = "language")
-@Getter
+@Table(name = "technology")
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Language {
+public class Technology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -22,8 +20,6 @@ public class Language {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "technologies")
-//    @OneToMany(mappedBy = "language")
-//    private List<Technology> technology;
-
+//    @JoinColumn(name = "id")
+//    private Language language;
 }

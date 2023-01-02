@@ -1,11 +1,15 @@
 package kodlama.io.Devs.business;
 
+import kodlama.io.Devs.business.requests.CreateLanguageRequest;
+import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
 import kodlama.io.Devs.dataAccess.LanguageRepository;
 import kodlama.io.Devs.entities.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LanguageManager implements LanguageService{
@@ -18,34 +22,37 @@ public class LanguageManager implements LanguageService{
     }
 
     @Override
-    public void postLanguage(Language language) {    //add
-        for (Language lang: languageRepository.getLanguages()) {
-            if (lang.getId() == language.getId() || lang.getName().equals(language.getName()) || language.getName().isEmpty()) {
-                System.out.println("Language can not be added.");
-            }
-            else{
-            languageRepository.postLanguage(language);
+    public void addLanguage(CreateLanguageRequest createLanguageRequest) {
+        Language language = new Language();
+        language.setName(createLanguageRequest.getName());
+
+        languageRepository.save(language);
+    }
+
+    @Override
+    public void deleteLanguage(CreateLanguageRequest createLanguageRequest) {
+        for (Language item : languageRepository.findAll())
+        {
+            if (item.getName().equals(createLanguageRequest.getName()))
+            {
+                languageRepository.delete(item);
             }
         }
     }
 
-    @Override
-    public void deleteLanguage(Language language) {
-        languageRepository.delete(language);
-    }
-
-    @Override
-    public void updateLanguage(Language language) {
-        //update işlemleri
-    }
-
-    @Override
-    public void getLanguages() {
-        languageRepository.listLanguages();
-    }
-
-    public List<Language> listLanguages()
+    public List<GetAllLanguageResponse> listLanguages()
     {
-        return languageRepository.getLanguages();
+        List<Language> languages = languageRepository.findAll();
+        List<GetAllLanguageResponse> getAllLanguageResponses = new ArrayList<GetAllLanguageResponse>();
+
+        for (Language language: languages) {
+            GetAllLanguageResponse response = new GetAllLanguageResponse();
+            response.setId(language.getId());
+            response.setName(language.getName());
+
+            getAllLanguageResponses.add(response);
+        }
+
+        return getAllLanguageResponses;
     }
 }
