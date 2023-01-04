@@ -1,15 +1,15 @@
 package kodlama.io.Devs.business;
 
 import kodlama.io.Devs.business.requests.CreateLanguageRequest;
+import kodlama.io.Devs.business.requests.DeleteLanguageRequest;
 import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
-import kodlama.io.Devs.business.responses.GetAllTechtoLanguageResponse;
 
 import java.util.List;
 
 public interface LanguageService {
 
-    void addLanguage(CreateLanguageRequest createLanguageRequest);
+    void add(CreateLanguageRequest createLanguageRequest);
 
-    void deleteLanguage(CreateLanguageRequest createLanguageRequest);
-    List<GetAllLanguageResponse> listLanguages();
+    void delete(DeleteLanguageRequest deleteLanguageRequest);
+    List<GetAllLanguageResponse> list();
 }

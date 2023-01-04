@@ -1,19 +1,12 @@
 package kodlama.io.Devs.webApi;
 
 import kodlama.io.Devs.business.LanguageService;
-import kodlama.io.Devs.business.TechService;
 import kodlama.io.Devs.business.requests.CreateLanguageRequest;
-import kodlama.io.Devs.business.requests.CreateTechRequest;
+import kodlama.io.Devs.business.requests.DeleteLanguageRequest;
 import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
-import kodlama.io.Devs.business.responses.GetAllTechtoLanguageResponse;
-import kodlama.io.Devs.entities.Language;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.ServerException;
 import java.util.List;
 
 @RestController
@@ -29,18 +22,18 @@ public class LanguagesController {
 
     @GetMapping("/getlist")
     public List<GetAllLanguageResponse> getList() {
-        return languageService.listLanguages();
+        return languageService.list();
     }
 
     @PostMapping("/add")
     public void add(CreateLanguageRequest createLanguageRequest)
     {
-        languageService.addLanguage(createLanguageRequest);
+        languageService.add(createLanguageRequest);
     }
 
     @DeleteMapping("/delete")
-    public  void delete(CreateLanguageRequest createLanguageRequest)
+    public  void delete(DeleteLanguageRequest deleteLanguageRequest)
     {
-        languageService.deleteLanguage(createLanguageRequest);
+        languageService.delete(deleteLanguageRequest);
     }
 }

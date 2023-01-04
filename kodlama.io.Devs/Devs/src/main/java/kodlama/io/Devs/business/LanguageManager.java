@@ -2,6 +2,7 @@ package kodlama.io.Devs.business;
 
 import jakarta.validation.constraints.Null;
 import kodlama.io.Devs.business.requests.CreateLanguageRequest;
+import kodlama.io.Devs.business.requests.DeleteLanguageRequest;
 import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
 import kodlama.io.Devs.business.responses.GetAllTechtoLanguageResponse;
 import kodlama.io.Devs.dataAccess.LanguageRepository;
@@ -23,7 +24,7 @@ public class LanguageManager implements LanguageService{
     }
 
     @Override
-    public void addLanguage(CreateLanguageRequest createLanguageRequest) {
+    public void add(CreateLanguageRequest createLanguageRequest) {
         Language language = new Language();
         language.setName(createLanguageRequest.getName());
 
@@ -31,17 +32,18 @@ public class LanguageManager implements LanguageService{
     }
 
     @Override
-    public void deleteLanguage(CreateLanguageRequest createLanguageRequest) {
-        for (Language item : languageRepository.findAll())
+    public void delete(DeleteLanguageRequest deleteLanguageRequest) {
+        List<Language> languages = languageRepository.findAll();
+        for (Language item : languages)
         {
-            if (item.getName().equals(createLanguageRequest.getName()))
+            if (item.getName().equalsIgnoreCase(deleteLanguageRequest.getName()))
             {
-                languageRepository.delete(item);
+               languageRepository.delete(item);
             }
         }
     }
 
-    public List<GetAllLanguageResponse> listLanguages()
+    public List<GetAllLanguageResponse> list()
     {
         List<Language> languages = languageRepository.findAll();
         List<GetAllLanguageResponse> getAllLanguageResponses = new ArrayList<>();
