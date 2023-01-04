@@ -5,6 +5,7 @@ import kodlama.io.Devs.business.TechService;
 import kodlama.io.Devs.business.requests.CreateLanguageRequest;
 import kodlama.io.Devs.business.requests.CreateTechRequest;
 import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
+import kodlama.io.Devs.business.responses.GetAllTechtoLanguageResponse;
 import kodlama.io.Devs.entities.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

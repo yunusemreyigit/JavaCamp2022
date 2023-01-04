@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateTechRequest {
      String name;
+     int languageId;
 }

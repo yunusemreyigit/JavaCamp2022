@@ -20,6 +20,7 @@ public class Technology {
     @Column(name = "name")
     private String name;
 
-//    @JoinColumn(name = "id")
-//    private Language language;
+    @ManyToOne
+    @JoinColumn(name = "languageId")
+    private Language language;
 }

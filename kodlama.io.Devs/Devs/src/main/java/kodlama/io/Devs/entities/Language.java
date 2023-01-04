@@ -22,8 +22,8 @@ public class Language {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "technologies")
-//    @OneToMany(mappedBy = "language")
-//    private List<Technology> technology;
+
+    @OneToMany(mappedBy = "language")
+    private List<Technology> technology;
 
 }

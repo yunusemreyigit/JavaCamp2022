@@ -2,6 +2,7 @@ package kodlama.io.Devs.business;
 
 import kodlama.io.Devs.business.requests.CreateLanguageRequest;
 import kodlama.io.Devs.business.responses.GetAllLanguageResponse;
+import kodlama.io.Devs.business.responses.GetAllTechtoLanguageResponse;
 
 import java.util.List;
 
